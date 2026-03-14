@@ -1,0 +1,26 @@
+# Go
+backend/bin/
+*.exe
+*.test
+*.out
+
+# Environment
+.env
+backend/.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+postgres_data/
+redis_data/
+
+# Context (Conductor)
+.context/
