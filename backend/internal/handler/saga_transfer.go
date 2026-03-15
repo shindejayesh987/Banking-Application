@@ -8,10 +8,10 @@ import (
 )
 
 type SagaTransferHandler struct {
-	transferSaga *saga.Orchestrator
+	transferSaga sagaExecutor
 }
 
-func NewSagaTransferHandler(transferSaga *saga.Orchestrator) *SagaTransferHandler {
+func NewSagaTransferHandler(transferSaga sagaExecutor) *SagaTransferHandler {
 	return &SagaTransferHandler{transferSaga: transferSaga}
 }
 
