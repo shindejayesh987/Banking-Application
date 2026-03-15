@@ -9,10 +9,10 @@ import (
 )
 
 type AccountHandler struct {
-	svc *service.AccountService
+	svc accountServicer
 }
 
-func NewAccountHandler(svc *service.AccountService) *AccountHandler {
+func NewAccountHandler(svc accountServicer) *AccountHandler {
 	return &AccountHandler{svc: svc}
 }
 

@@ -88,6 +88,7 @@ func main() {
 	txnH := handler.NewTransactionHandler(txnSvc)
 	userH := handler.NewUserHandler(userRepo)
 	sagaH := handler.NewSagaTransferHandler(transferSaga)
+	authH := handler.NewAuthHandler(userRepo)
 
 	// --- Kafka Consumers ---
 	txnConsumer := consumer.NewRunner(cfg.Kafka.Brokers, "transactions", "banking-txn-logger", consumer.TransactionLogger())
@@ -106,6 +107,11 @@ func main() {
 
 	// Health
 	mux.HandleFunc("GET /health", healthH.Health)
+
+	// Auth (used by the React frontend)
+	mux.HandleFunc("POST /auth/register", authH.Register)
+	mux.HandleFunc("POST /auth/login", authH.Login)
+	mux.HandleFunc("POST /auth/logout", authH.Logout)
 
 	// Users
 	mux.HandleFunc("POST /api/v1/users", userH.Create)

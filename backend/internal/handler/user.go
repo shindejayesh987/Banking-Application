@@ -3,15 +3,13 @@ package handler
 import (
 	"encoding/json"
 	"net/http"
-
-	"github.com/jayeshinusshinde/banking-backend/internal/repository"
 )
 
 type UserHandler struct {
-	repo *repository.UserRepo
+	repo userRepository
 }
 
-func NewUserHandler(repo *repository.UserRepo) *UserHandler {
+func NewUserHandler(repo userRepository) *UserHandler {
 	return &UserHandler{repo: repo}
 }
 
